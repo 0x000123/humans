@@ -185,22 +185,22 @@ humansd query bank balances humans...address1yjgn7z09ua9vms259j
 
 ## Stakes, Delegates, and Awards
 - Delegation Process:
-```
+```python
 humansd tx staking delegate $HUMAN_VALOPER_ADDRESS 10000000uheart --from=$WALLET --chain-id testnet-1 --gas=auto
 ```
 
 - Retransfer part of the validator to another validator:
-```
+```python
 humansd tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000uheart --from=$WALLET --chain-id testnet-1 --gas=auto
 ```
 
 - Withdraw all Rewards:
-```
+```python
 humansd tx distribution withdraw-all-rewards --from=$WALLET --chain-id testnet-1 --gas=auto
 ```
 
 - Withdraw rewards with commissions:
-```
+```python
 humansd tx distribution withdraw-rewards $VALOPER_ADDRESS --from $WALLET --commission --chain-id testnet-1
 ```
 
