@@ -205,7 +205,7 @@ humansd tx distribution withdraw-rewards $VALOPER_ADDRESS --from $WALLET --commi
 ```
 
 ### UNJAIL:
-```
+```python
 nibid tx slashing unjail \
   --from $WALLET \
   --broadcast-mode block \
