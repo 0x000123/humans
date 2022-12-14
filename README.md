@@ -55,7 +55,7 @@ mv humansd /root/go/bin/humansd
 
 ```python
 humansd config chain-id testnet-1
-humansd init STAVRguide --chain-id testnet-1
+humansd init 0x000123 --chain-id testnet-1
 ```    
 
 ## Create/recover wallet
@@ -180,4 +180,36 @@ sudo journalctl -u humansd -f -o cat
 ### Check Balance
 ```python
 humansd query bank balances humans...address1yjgn7z09ua9vms259j
+```
+
+
+## Stakes, Delegates, and Awards
+- Delegation Process:
+```
+humansd tx staking delegate $HUMAN_VALOPER_ADDRESS 10000000uheart --from=$WALLET --chain-id testnet-1 --gas=auto
+```
+
+- Retransfer part of the validator to another validator:
+```
+humansd tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000uheart --from=$WALLET --chain-id testnet-1 --gas=auto
+```
+
+- Withdraw all Rewards:
+```
+humansd tx distribution withdraw-all-rewards --from=$WALLET --chain-id testnet-1 --gas=auto
+```
+
+- Withdraw rewards with commissions:
+```
+humansd tx distribution withdraw-rewards $VALOPER_ADDRESS --from $WALLET --commission --chain-id testnet-1
+```
+
+### UNJAIL:
+```
+nibid tx slashing unjail \
+  --from $WALLET \
+  --broadcast-mode block \
+  --chain-id testnet-1 \
+  --fees=250uheart
+  --gas-prices 1uheart
 ```
